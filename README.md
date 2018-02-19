@@ -1,6 +1,9 @@
-LOADING BAR INDICATOR
+Python Loading Bar
 =====================
 
+Python module to display a nice loading bar in a terminal window.
+
+Tested only on MacOSX but it should work on any other unix system.
 
 Install
 -------
