@@ -28,6 +28,9 @@ class LoadingBar:
         self.verbose = verbose
 
     def speed(self):
+        """
+        Calculate speed in Kbytes/seconds.
+        """
         if not self.start_time:
             return 0
         # Calculate speed in ko/s
@@ -35,12 +38,18 @@ class LoadingBar:
 
     @staticmethod
     def speed_to_str(speed):
+        """
+        Convert speed to formated string with the appropriate units.
+        """
         if speed < 1000:
             return "{:>3}K/s".format(int(speed))
         else:
             return "{:>3}M/s".format(int(speed/1000))
 
     def time_remain(self):
+        """
+        Calculate time remaining in seconds.
+        """
         if self.speed() == 0:
             return 0
         else:
@@ -48,6 +57,9 @@ class LoadingBar:
 
     @staticmethod
     def time_to_str(time):
+        """
+        Convert time to formated string with the appropriate time units.
+        """
         if time < 60:
             return "{:>2}sec ".format(int(time))
         elif time > 60 and time < 3600:
@@ -57,6 +69,9 @@ class LoadingBar:
 
     @staticmethod
     def size_to_str(size):
+        """
+        Convert size in bytes to string with appropriate units.
+        """
         # At least display size in Ko
         size = size / 1000
         if size > 1000000:
@@ -67,19 +82,26 @@ class LoadingBar:
             return "{:>5}K".format(int(size))
 
     def output(self, progress):
+        """
+        Return a formated string for the loading bar output.
+        """
         if self.verbose:
-            s = '\r' + self.color_bar + self.symbol * progress + \
-                self.color_bg + self.empty_symbol * (self.size - progress) + \
-                '\033[0m '
-        else:
             s = '\r' + self.color_bar + self.symbol * progress + \
                 self.color_bg + self.empty_symbol * (self.size - progress) + \
                 '\033[0m ' + self.size_to_str(self.loaded) + '    ' + \
                 self.speed_to_str(self.speed()) + '   ' + \
                 self.time_to_str(self.time_remain())
+        else:
+            s = '\r' + self.color_bar + self.symbol * progress + \
+                self.color_bg + self.empty_symbol * (self.size - progress) + \
+                '\033[0m '
+
         return s
 
     def update(self, len_data):
+        """
+        Method that updates to loading bar.
+        """
         self.loaded += len_data
         progress = int(self.loaded * self.size / self.tot_size)
         # Output to console
@@ -89,6 +111,9 @@ class LoadingBar:
             self.start_time = time.time()
 
     def done(self):
+        """
+        Method to run when the loading is complete.
+        """
         sys.stdout.write(self.output(self.size))
         sys.stdout.write('\n')
         sys.stdout.flush()
