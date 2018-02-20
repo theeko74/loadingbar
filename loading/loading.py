@@ -42,9 +42,9 @@ class LoadingBar:
         Convert speed to formated string with the appropriate units.
         """
         if speed < 1000:
-            return "{:>3}K/s".format(int(speed))
+            return "{:>4}K/s".format(int(speed))
         else:
-            return "{:>3}M/s".format(int(speed/1000))
+            return "{:4.1f}M/s".format(int(speed/1000))
 
     def time_remain(self):
         """
