@@ -81,7 +81,7 @@ class LoadingBar:
         else:
             return "{:>5}K".format(int(size))
 
-    def output(self, progress):
+    def output(self, progress, msg=None):
         """
         Return a formated string for the loading bar output.
         """
@@ -96,16 +96,19 @@ class LoadingBar:
                 self.color_bg + self.empty_symbol * (self.size - progress) + \
                 '\033[0m '
 
+        if msg:
+            s += '   ' + msg
+
         return s
 
-    def update(self, len_data):
+    def update(self, len_data, msg=None):
         """
         Method that updates to loading bar.
         """
         self.loaded += len_data
         progress = int(self.loaded * self.size / self.tot_size)
         # Output to console
-        sys.stdout.write(self.output(progress))
+        sys.stdout.write(self.output(progress, msg))
         sys.stdout.flush()
         if not self.start_time:
             self.start_time = time.time()
