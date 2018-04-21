@@ -28,6 +28,8 @@ There are 3 different loading bar:
 
 ## Option 1
 
+![Loading bar option 1](screenshots/Option1.png)
+
 ```
 import loading
 total_file_size = 1000
@@ -45,6 +47,8 @@ lg.done()
 
 ## Option 2
 
+![Loading bar option 2](screenshots/Option2.png)
+
 ```
 import loading
 total_file_size = 1000
@@ -53,6 +57,8 @@ lb = loading.InfoLoadingBar(total_file_size)
 ```
 
 ## Option 3
+
+![Loading bar option 3](screenshots/Option3.png)
 
 ```
 import loading
