@@ -13,7 +13,7 @@ setup(
     license='MIT',
     author='Sylvain Carlioz',
     author_email='sylvain.carlioz@gmail.com',
-    keywords='lading bar',
+    keywords='loading bar',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[

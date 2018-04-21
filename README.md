@@ -21,7 +21,12 @@ $ python3 setup.py install
 Getting Started
 ---------------
 
-Use this module as a library in your script:
+There are 3 different loading bar:
+1. Standard loading bar
+2. Loading bar with size loaded, speed and remaining time
+3. Loading bar with infos above plus a custom message (usefull to display a verbose loading bar)
+
+## Option 1
 
 ```
 import loading
@@ -38,12 +43,33 @@ for chunk in file:
 lg.done()
 ```
 
-Options
--------
+## Option 2
 
-* `size=50` changes the size of the loading bar.
-* `verbose=True` adds to loading bar the size loaded, speed, and time remaining.
-* `symbol='\u2588'` changes the character for the loading bar (by default unicode char).
-* `empty_symbol='\u2588'` changes the character for the empty loading bar.
-* `color_bar='\033[31m'` changes the color of the loading bar.
-* `color_bg='\033[1;30m'` changes the color of the empty part of the loading bar.
+```
+import loading
+total_file_size = 1000
+lb = loading.InfoLoadingBar(total_file_size)
+# Run as above
+```
+
+## Option 3
+
+```
+import loading
+total_file_size = 1000
+lb = loading.VerboseLoadingBar(total_file_size)
+
+# For every piece of file
+for chunk in file:
+  # Update the loading bar with the len of new data
+  lg.update(len(chunk), "Message to be displayed, such as filename, etc.")
+
+# When finished, display a 100% loading bar
+lg.done()
+```
+
+Customization
+-------------
+
+If a new and custom loading bar is needed, you can implement a new one by inheriting from the LoadingBar class or the abstract class ILoadingBar.
+See loading > loading_bar.py for examples.
