@@ -9,7 +9,8 @@ Module for the background of the loading bar:
       the default properties.
 """
 
-from indicator import ILoadingBarIndicator
+from .indicator import ILoadingBarIndicator
+
 
 class ILoadingBackground(ILoadingBarIndicator):
     """

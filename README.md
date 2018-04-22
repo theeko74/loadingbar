@@ -79,3 +79,8 @@ Customization
 
 If a new and custom loading bar is needed, you can implement a new one by inheriting from the LoadingBar class or the abstract class ILoadingBar.
 See loading > loading_bar.py for examples.
+
+License
+-------
+MIT license.
+Feel free to use, share, or improve it.

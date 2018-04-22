@@ -10,9 +10,9 @@ everything is working well.
 
 import time
 
-import loading_bar
-import background
-import indicator
+import loading.loadingbar
+import loading.background
+import loading.indicator
 
 
 #-----------------------------------------------------
@@ -23,7 +23,7 @@ print("Standard loading bar, low number")
 SIZE = 10**5 # 100KB
 STEP = 10**4 # 10KB
 
-lb = loading_bar.LoadingBar(SIZE)
+lb = loadingbar.LoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP)
     time.sleep(0.5)
@@ -37,7 +37,7 @@ print("Standard loading bar, high number")
 SIZE = 10**7 # 10MB
 STEP = 10**6 # 1MB
 
-lb = loading_bar.LoadingBar(SIZE)
+lb = loadingbar.LoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP)
     time.sleep(0.5)
@@ -51,7 +51,7 @@ print("Info loading bar, low number")
 SIZE = 10**5 # 100KB
 STEP = 10**4 # 10KB
 
-lb = loading_bar.InfoLoadingBar(SIZE)
+lb = loadingbar.InfoLoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP)
     time.sleep(0.5)
@@ -65,7 +65,7 @@ print("Info loading bar, high number")
 SIZE = 10**7 # 100KB
 STEP = 10**6 # 10KB
 
-lb = loading_bar.InfoLoadingBar(SIZE)
+lb = loadingbar.InfoLoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP)
     time.sleep(0.5)
@@ -79,7 +79,7 @@ print("Verbose loading bar, low number")
 SIZE = 10**5 # 100KB
 STEP = 10**4 # 10KB
 
-lb = loading_bar.VerboseLoadingBar(SIZE)
+lb = loadingbar.VerboseLoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP, "/temp/usr/{}".format(i))
     time.sleep(0.5)
@@ -93,7 +93,7 @@ print("Verbose loading bar, low number")
 SIZE = 10**7 # 10MB
 STEP = 10**5 # 100KB
 
-lb = loading_bar.VerboseLoadingBar(SIZE)
+lb = loadingbar.VerboseLoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP, "/temp/usr/{}".format(i))
     time.sleep(0.5)
