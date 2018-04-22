@@ -42,8 +42,8 @@ class ILoadingBar:
         Method to draw the loading bar.
         """
         self.progress += (progression * self.display_size) / self.tot_size
-        if self.progress >= self.tot_size:
-            return self.done()
+        if self.progress >= self.display_size:
+            self.progress = self.display_size
 
         s = self.loading_indicator.display(round(self.progress))
         s += self.background.display(round(self.progress))

@@ -10,9 +10,9 @@ everything is working well.
 
 import time
 
-import loading.loadingbar
-import loading.background
-import loading.indicator
+from loading import loadingbar
+from loading import background
+from loading import indicator
 
 
 #-----------------------------------------------------
@@ -88,12 +88,26 @@ lb.done()
 #-----------------------------------------------------
 
 print("---- TEST 6 ----")
-print("Verbose loading bar, low number")
+print("Message loading bar, low number")
 
-SIZE = 10**7 # 10MB
-STEP = 10**5 # 100KB
+SIZE = 10**5 # 100KB
+STEP = 10**4 # 10KB
 
-lb = loadingbar.VerboseLoadingBar(SIZE)
+lb = loadingbar.MessageLoadingBar(SIZE)
+for i in range(0, SIZE, STEP):
+    lb.update(STEP, "/temp/usr/{}".format(i))
+    time.sleep(0.5)
+lb.done()
+
+#-----------------------------------------------------
+
+print("---- TEST 7 ----")
+print("Message loading bar, very low number")
+
+SIZE = 3
+STEP = 1
+
+lb = loadingbar.MessageLoadingBar(SIZE)
 for i in range(0, SIZE, STEP):
     lb.update(STEP, "/temp/usr/{}".format(i))
     time.sleep(0.5)

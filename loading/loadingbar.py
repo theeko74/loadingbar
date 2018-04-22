@@ -10,13 +10,16 @@ Main module for the loading bar
 
 import sys
 
-from loading.aloadingbar import ILoadingBar
+from .aloadingbar import ILoadingBar
 from . import indicator
 from . import background
 from . import infos
 
 
-__all__ = ['LoadingBar', 'InfoLoadingBar', 'VerboseLoadingBar']
+__all__ = [
+    'LoadingBar', 'InfoLoadingBar', 'VerboseLoadingBar',
+    'MessageLoadingBar'
+]
 
 
 DEFAULT_DISPLAY_SIZE = 50
@@ -45,6 +48,24 @@ class InfoLoadingBar(ILoadingBar):
         default_bg = background.StandardLoadingBackground(self.display_size)
         default_info = infos.StandardInfo(tot_size)
         super().__init__(tot_size, self.display_size, default_li, default_bg, default_info)
+
+
+class MessageLoadingBar(LoadingBar):
+    """
+    Loading bar with a message to display info like filename, etc.
+    """
+
+    def __init__(self, tot_size):
+        super().__init__(tot_size)
+
+    def update(self, progression, msg):
+        """
+        Override update method.
+        """
+        s = self.update_loading_bar(progression)
+        if s:
+            s += '  ' + msg
+            self.display(s)
 
 
 class VerboseLoadingBar(ILoadingBar):

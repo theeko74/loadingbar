@@ -23,7 +23,7 @@ class ILoadingBackground(ILoadingBarIndicator):
         """
         if size == 0:
             self.done()
-        return "{0}{1}\033[0m".format(self.color, self.symbol) * (self.tot_size - size)
+        return "{0}{1}\033[0m".format(self.color, self.symbol) * (self.display_size - size)
 
     def done(self):
         return "\033[0m"
@@ -34,5 +34,5 @@ class StandardLoadingBackground(ILoadingBackground):
     Default class for the loading bar background.
     """
 
-    def __init__(self, tot_size):
-        super().__init__(tot_size, '\u2588', '\033[1;30m')
+    def __init__(self, display_size):
+        super().__init__(display_size, '\u2588', '\033[1;30m')

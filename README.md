@@ -30,7 +30,7 @@ There are 3 different loading bar:
 
 ![Loading bar option 1](screenshots/Option1.png)
 
-```
+```python
 import loading
 total_file_size = 1000
 # Create a loading bar object with total_file_size in bytes
@@ -49,7 +49,7 @@ lg.done()
 
 ![Loading bar option 2](screenshots/Option2.png)
 
-```
+```python
 import loading
 total_file_size = 1000
 lb = loading.InfoLoadingBar(total_file_size)
@@ -60,7 +60,7 @@ lb = loading.InfoLoadingBar(total_file_size)
 
 ![Loading bar option 3](screenshots/Option3.png)
 
-```
+```python
 import loading
 total_file_size = 1000
 lb = loading.VerboseLoadingBar(total_file_size)
