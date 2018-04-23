@@ -1,9 +1,8 @@
 Python Loading Bar
 =====================
+![Travis Test](https://travis-ci.org/theeko74/loading.svg?branch=master)
 
 Python module to display a nice loading bar in a terminal window.
-
-Tested only on MacOSX but it should work on any other unix system.
 
 Install
 -------
