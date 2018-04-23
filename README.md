@@ -58,6 +58,17 @@ lb = loading.InfoLoadingBar(total_file_size)
 
 ## Option 3
 
+This special `InternetLoadingBar` smooth the speed calculation by taking the overall average time rather than a instant speed.
+
+```python
+import loading
+total_file_size = 1000
+lb = loading.InternetLoadingBar(total_file_size)
+# Run as above
+```
+
+## Option 4
+
 ![Loading bar option 3](screenshots/Option3.png)
 
 ```python

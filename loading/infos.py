@@ -56,6 +56,17 @@ class VerboseInfo(StandardInfo):
         return s
 
 
+class InternetInfo(AbstractInfo):
+    """
+    Infos for internet download.
+    """
+
+    def __init__(self, tot_size):
+        self.size_calculator = SizeCalculator(tot_size)
+        self.speed_calculator = InternetSpeedCalculator(tot_size)
+        self.eta_calculator = ETACalculator(self.speed_calculator)
+
+
 class SpeedCalculator:
     """
     Speed calculator algorithm.
@@ -77,7 +88,10 @@ class SpeedCalculator:
             tmp_time = time.time()
             delta_time = tmp_time - self.time
             self.time = tmp_time
-            self._calculated_speed = loaded / delta_time / 1000
+            if delta_time == 0:
+                self._calculated_speed = 0
+            else:
+                self._calculated_speed = loaded / 1000 / delta_time
         return self._calculated_speed
 
     @staticmethod
@@ -102,6 +116,36 @@ class SpeedCalculator:
         """
         if not self._calculated_speed:
             self.speed(loaded)
+        return self._calculated_speed
+
+
+class InternetSpeedCalculator(SpeedCalculator):
+    """
+    Special calculator to get an average speed of the download
+    rather than an evaluation at every chunk received which not accurate.
+    """
+
+    def __init__(self, tot_size):
+        super().__init__(tot_size)
+        self.cumulate = 0
+        self.start_time = None
+
+    def speed(self, loaded):
+        """
+        Override standard speed function.
+        """
+        if not self.time:
+            self._calculated_speed = 0
+            self.time = time.time()
+        else:
+            if not self.start_time:
+                self.start_time = time.time()
+            delta_time = time.time() - self.start_time
+            self.cumulate += loaded
+            if delta_time == 0:
+                self._calculated_speed = 0
+            else:
+                self._calculated_speed = self.cumulate / 1000 / delta_time
         return self._calculated_speed
 
 

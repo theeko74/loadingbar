@@ -18,7 +18,7 @@ from . import infos
 
 __all__ = [
     'LoadingBar', 'InfoLoadingBar', 'VerboseLoadingBar',
-    'MessageLoadingBar'
+    'MessageLoadingBar', 'InternetLoadingBar'
 ]
 
 
@@ -90,3 +90,16 @@ class VerboseLoadingBar(ILoadingBar):
         Override update method.
         """
         return self.info.display(progression, msg)
+
+
+class InternetLoadingBar(ILoadingBar):
+    """
+    Special loading bar for internet downloads.
+    """
+    display_size = DEFAULT_DISPLAY_SIZE
+
+    def __init__(self, tot_size):
+        default_li = indicator.StandardLoadingBarIndicator(self.display_size)
+        default_bg = background.StandardLoadingBackground(self.display_size)
+        default_info = infos.InternetInfo(tot_size)
+        super().__init__(tot_size, self.display_size, default_li, default_bg, default_info)
