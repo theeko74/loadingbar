@@ -17,6 +17,7 @@ from loading import indicator
 
 #-----------------------------------------------------
 def test_1():
+    print("\n")
     print("---- TEST 1 ----")
     print("Standard loading bar, low number")
 
@@ -31,6 +32,7 @@ def test_1():
 
 #-----------------------------------------------------
 def test_2():
+    print("\n")
     print("---- TEST 2 ----")
     print("Standard loading bar, high number")
 
@@ -45,6 +47,7 @@ def test_2():
 
 #-----------------------------------------------------
 def test_3():
+    print("\n")
     print("---- TEST 3 ----")
     print("Info loading bar, low number")
 
@@ -59,6 +62,7 @@ def test_3():
 
 #-----------------------------------------------------
 def test_4():
+    print("\n")
     print("---- TEST 4 ----")
     print("Info loading bar, high number")
 
@@ -73,6 +77,7 @@ def test_4():
 
 #-----------------------------------------------------
 def test_5():
+    print("\n")
     print("---- TEST 5 ----")
     print("Verbose loading bar, low number")
 
@@ -87,6 +92,7 @@ def test_5():
 
 #-----------------------------------------------------
 def test_6():
+    print("\n")
     print("---- TEST 6 ----")
     print("Message loading bar, low number")
 
@@ -101,6 +107,7 @@ def test_6():
 
 #-----------------------------------------------------
 def test_7():
+    print("\n")
     print("---- TEST 7 ----")
     print("Message loading bar, very low number")
 
