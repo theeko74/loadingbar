@@ -6,3 +6,4 @@ build/
 dist/
 .pytest_*
 .eggs/
+*.pyc

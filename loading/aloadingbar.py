@@ -6,7 +6,17 @@ Main module for the loading bar abstract class.
     - ILoadingBar is an interface class which represents the loading bar.
 """
 
+# Python2 compatibility
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import round
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
 
+# Standard imports
 import sys
 
 
@@ -14,7 +24,7 @@ import sys
 # ABSTRACT CLASS
 #-----------------------------------------------------------------
 
-class ILoadingBar:
+class ILoadingBar(object):
     """
     Interface class for the loading bar.
     """

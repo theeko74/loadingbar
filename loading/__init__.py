@@ -9,6 +9,8 @@ This module provides a highly customizable loading bar to display in
 a console/terminal windowself. Loading bar is customizable by adding
 new class.
 """
+# Python2 compatibility
+from __future__ import absolute_import
 
 from .loadingbar import *
 

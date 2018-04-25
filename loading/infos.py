@@ -7,10 +7,22 @@ Module for the label side to the loading bar that displays information:
     - StandardInfo inherits from IInfo and has the default properties.
 """
 
+# Python2 compatibility
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import super
+from builtins import round
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
+
+# Standard imports
 import time
 
 
-class AbstractInfo:
+class AbstractInfo(object):
     """
     Abstract class for the info label.
     """
@@ -67,7 +79,7 @@ class InternetInfo(AbstractInfo):
         self.eta_calculator = ETACalculator(self.speed_calculator)
 
 
-class SpeedCalculator:
+class SpeedCalculator(object):
     """
     Speed calculator algorithm.
     """
@@ -149,7 +161,7 @@ class InternetSpeedCalculator(SpeedCalculator):
         return self._calculated_speed
 
 
-class SizeCalculator:
+class SizeCalculator(object):
     """
     Downloaded size calculator.
     """
@@ -186,7 +198,7 @@ class SizeCalculator:
         return self.size_to_str(self.size(loaded))
 
 
-class ETACalculator:
+class ETACalculator(object):
     """
     Calculate the Estimate Time to Arrival (ETA),
     or how many time before the download is complete.

@@ -9,7 +9,17 @@ Module for the background of the loading bar:
       the default properties.
 """
 
-from .indicator import ILoadingBarIndicator
+# Python2 compatibility
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+from builtins import super
+from future import standard_library
+standard_library.install_aliases()
+
+# Standard imports
+from loading.indicator import ILoadingBarIndicator
 
 
 class ILoadingBackground(ILoadingBarIndicator):

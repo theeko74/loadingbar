@@ -7,13 +7,23 @@ Main module for the loading bar
     - StandardLoadingBar inherits from ILoadingBar and has customization.
 """
 
+# Python 2 compatibility
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import super
+from future import standard_library
+standard_library.install_aliases()
 
+# Standard imports
 import sys
 
-from .aloadingbar import ILoadingBar
-from . import indicator
-from . import background
-from . import infos
+# Module imports
+from loading.aloadingbar import ILoadingBar
+from loading import indicator
+from loading import background
+from loading import infos
 
 
 __all__ = [
