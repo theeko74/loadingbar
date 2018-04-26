@@ -19,7 +19,7 @@ from future import standard_library
 standard_library.install_aliases()
 
 # Standard imports
-from loading.indicator import ILoadingBarIndicator
+from loadingbar.indicator import ILoadingBarIndicator
 
 
 class ILoadingBackground(ILoadingBarIndicator):

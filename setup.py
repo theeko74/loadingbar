@@ -3,11 +3,11 @@ A setuptools based setup module.
 """
 
 from setuptools import setup, find_packages
-import loading
+import loadingbar
 
 setup(
-    name='loading',
-    version=loading.__version__,
+    name='loadingbar',
+    version=loadingbar.__version__,
     description="Library to display a loading bar in a terminal.",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',

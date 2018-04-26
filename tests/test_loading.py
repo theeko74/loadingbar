@@ -10,9 +10,9 @@ everything is working well.
 
 import time
 
-from loading import loadingbar
-from loading import background
-from loading import indicator
+from loadingbar import bars
+from loadingbar import background
+from loadingbar import indicator
 
 
 #-----------------------------------------------------
@@ -24,7 +24,7 @@ def test_1():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.LoadingBar(SIZE)
+    lb = bars.LoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -39,7 +39,7 @@ def test_2():
     SIZE = 10**7 # 10MB
     STEP = 10**6 # 1MB
 
-    lb = loadingbar.LoadingBar(SIZE)
+    lb = bars.LoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -54,7 +54,7 @@ def test_3():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.InfoLoadingBar(SIZE)
+    lb = bars.InfoLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -69,7 +69,7 @@ def test_4():
     SIZE = 10**7 # 100KB
     STEP = 10**6 # 10KB
 
-    lb = loadingbar.InfoLoadingBar(SIZE)
+    lb = bars.InfoLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -84,7 +84,7 @@ def test_5():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.VerboseLoadingBar(SIZE)
+    lb = bars.VerboseLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP, "/temp/usr/{}".format(i))
         time.sleep(0.5)
@@ -99,7 +99,7 @@ def test_6():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.MessageLoadingBar(SIZE)
+    lb = bars.MessageLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP, "/temp/usr/{}".format(i))
         time.sleep(0.5)
@@ -114,7 +114,7 @@ def test_7():
     SIZE = 3
     STEP = 1
 
-    lb = loadingbar.MessageLoadingBar(SIZE)
+    lb = bars.MessageLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP, "/temp/usr/{}".format(i))
         time.sleep(0.5)
@@ -129,7 +129,7 @@ def test_8():
     SIZE = 3
     STEP = 1
 
-    lb = loadingbar.PercentageLoadingBar(SIZE)
+    lb = bars.PercentageLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -144,7 +144,7 @@ def test_9():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.PercentageLoadingBar(SIZE)
+    lb = bars.PercentageLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -159,7 +159,7 @@ def test_10():
     SIZE = 3
     STEP = 1
 
-    lb = loadingbar.PercentageInfoLoadingBar(SIZE)
+    lb = bars.PercentageInfoLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -174,7 +174,7 @@ def test_11():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.PercentageInfoLoadingBar(SIZE)
+    lb = bars.PercentageInfoLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -189,7 +189,7 @@ def test_12():
     SIZE = 3
     STEP = 1
 
-    lb = loadingbar.PercentageBeforeLoadingBar(SIZE)
+    lb = bars.PercentageBeforeLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -204,7 +204,7 @@ def test_13():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.PercentageBeforeLoadingBar(SIZE)
+    lb = bars.PercentageBeforeLoadingBar(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -219,7 +219,7 @@ def test_14():
     SIZE = 3
     STEP = 1
 
-    lb = loadingbar.PercentageBeforeLoadingBarAndInfo(SIZE)
+    lb = bars.PercentageBeforeLoadingBarAndInfo(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)
@@ -234,7 +234,7 @@ def test_15():
     SIZE = 10**5 # 100KB
     STEP = 10**4 # 10KB
 
-    lb = loadingbar.PercentageBeforeLoadingBarAndInfo(SIZE)
+    lb = bars.PercentageBeforeLoadingBarAndInfo(SIZE)
     for i in range(0, SIZE, STEP):
         lb.update(STEP)
         time.sleep(0.5)

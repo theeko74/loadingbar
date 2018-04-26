@@ -12,6 +12,6 @@ new class.
 # Python2 compatibility
 from __future__ import absolute_import
 
-from .loadingbar import *
+from loadingbar.bars import *
 
 __version__ = '1.0.0'

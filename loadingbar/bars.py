@@ -20,10 +20,10 @@ standard_library.install_aliases()
 import sys
 
 # Module imports
-from loading.aloadingbar import ILoadingBar
-from loading import indicator
-from loading import background
-from loading import infos
+from loadingbar.aloadingbar import ILoadingBar
+from loadingbar import indicator
+from loadingbar import background
+from loadingbar import infos
 
 
 __all__ = [
