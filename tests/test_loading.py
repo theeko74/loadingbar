@@ -119,3 +119,123 @@ def test_7():
         lb.update(STEP, "/temp/usr/{}".format(i))
         time.sleep(0.5)
     lb.done()
+
+#-----------------------------------------------------
+def test_8():
+    print("\n")
+    print("---- TEST 8 ----")
+    print("Percentage loading bar, very low number")
+
+    SIZE = 3
+    STEP = 1
+
+    lb = loadingbar.PercentageLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_9():
+    print("\n")
+    print("---- TEST 9 ----")
+    print("Percentage loading bar,  high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = loadingbar.PercentageLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_10():
+    print("\n")
+    print("---- TEST 10 ----")
+    print("Percentage and info loading bar, very low number")
+
+    SIZE = 3
+    STEP = 1
+
+    lb = loadingbar.PercentageInfoLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_11():
+    print("\n")
+    print("---- TEST 11 ----")
+    print("Percentage and info loading bar,  high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = loadingbar.PercentageInfoLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_12():
+    print("\n")
+    print("---- TEST 12 ----")
+    print("Percentage before loading bar, very low number")
+
+    SIZE = 3
+    STEP = 1
+
+    lb = loadingbar.PercentageBeforeLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_13():
+    print("\n")
+    print("---- TEST 13 ----")
+    print("Percentage before loading bar, high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = loadingbar.PercentageBeforeLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_14():
+    print("\n")
+    print("---- TEST 14 ----")
+    print("Percentage before loading bar + infos, very low number")
+
+    SIZE = 3
+    STEP = 1
+
+    lb = loadingbar.PercentageBeforeLoadingBarAndInfo(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_15():
+    print("\n")
+    print("---- TEST 15 ----")
+    print("Percentage before loading bar + infos, high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = loadingbar.PercentageBeforeLoadingBarAndInfo(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()

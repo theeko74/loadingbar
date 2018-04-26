@@ -84,6 +84,26 @@ for chunk in file:
 lg.done()
 ```
 
+## Option 5
+
+Add a percentage after the loading bar.
+
+* `loading.PercentageLoadingBar(tot_size)`
+![Loading bar option 5-1](screenshots/Option5-0.png)
+
+* `loading.PercentageInfoLoadingBar(tot_size)`
+![Loading bar option 5-2](screenshots/Option5-1.png)
+
+## Option 6
+
+Add a percentage after the loading bar.
+
+* `loading.PercentageBeforeLoadingBar(tot_size)`
+![Loading bar option 6-0](screenshots/Option6-0.png)
+
+* `loading.PercentageBeforeLoadingBarAndInfo(tot_size)`
+![Loading bar option 6-1](screenshots/Option6-1.png)
+
 Customization
 -------------
 

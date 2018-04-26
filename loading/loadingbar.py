@@ -28,7 +28,9 @@ from loading import infos
 
 __all__ = [
     'LoadingBar', 'InfoLoadingBar', 'VerboseLoadingBar',
-    'MessageLoadingBar', 'InternetLoadingBar'
+    'MessageLoadingBar', 'InternetLoadingBar',
+    'PercentageLoadingBar', 'PercentageInfoLoadingBar',
+    'PercentageBeforeLoadingBar', 'PercentageBeforeLoadingBarAndInfo'
 ]
 
 
@@ -100,6 +102,81 @@ class VerboseLoadingBar(ILoadingBar):
         Override update method.
         """
         return self.info.display(progression, msg)
+
+
+class PercentageLoadingBar(ILoadingBar):
+    """
+    Loading bar that display a % indicator.
+    """
+    display_size = DEFAULT_DISPLAY_SIZE
+
+    def __init__(self, tot_size):
+        default_li = indicator.StandardLoadingBarIndicator(self.display_size)
+        default_bg = background.StandardLoadingBackground(self.display_size)
+        default_info = infos.PercentageOnlyInfo(tot_size)
+        super().__init__(tot_size, self.display_size, default_li, default_bg, default_info)
+
+
+class PercentageInfoLoadingBar(ILoadingBar):
+    """
+    Loading bar that display a % indicator and the standard infos.
+    """
+    display_size = DEFAULT_DISPLAY_SIZE
+
+    def __init__(self, tot_size):
+        default_li = indicator.StandardLoadingBarIndicator(self.display_size)
+        default_bg = background.StandardLoadingBackground(self.display_size)
+        default_info = infos.PercentageInfo(tot_size)
+        super().__init__(tot_size, self.display_size, default_li, default_bg, default_info)
+
+
+class PercentageBeforeLoadingBar(ILoadingBar):
+    """
+    Loading bar that display a % indicator before the loading bar.
+    """
+    display_size = DEFAULT_DISPLAY_SIZE
+
+    def __init__(self, tot_size):
+        default_li = indicator.StandardLoadingBarIndicator(self.display_size)
+        default_bg = background.StandardLoadingBackground(self.display_size)
+        self.perc = infos.PercentageOnlyInfo(tot_size)
+        super().__init__(tot_size, self.display_size, default_li, default_bg, None)
+
+    def update(self, progression):
+        """
+        Override update method.
+        """
+        s = self.perc.display(progression)
+        s += " "
+        s += self.update_loading_bar(progression)
+        if self.info:
+            s += self.update_info(progression)
+        self.display(s)
+
+    def done(self):
+        """
+        Override done method.
+        """
+        s = self.perc.percentage_calculator.done()
+        s += " "
+        s += self.loading_indicator.done()
+        s += self.background.done()
+        s += '\n'
+        self.display(s)
+
+
+class PercentageBeforeLoadingBarAndInfo(PercentageBeforeLoadingBar):
+    """
+    Loading bar that display a % indicator before the loading bar,
+    plus the standard additionnal infos.
+    """
+
+    def __init__(self, tot_size):
+        default_li = indicator.StandardLoadingBarIndicator(self.display_size)
+        default_bg = background.StandardLoadingBackground(self.display_size)
+        default_info = infos.StandardInfo(tot_size)
+        self.perc = infos.PercentageOnlyInfo(tot_size)
+        super(PercentageBeforeLoadingBar, self).__init__(tot_size, self.display_size, default_li, default_bg, default_info)
 
 
 class InternetLoadingBar(ILoadingBar):

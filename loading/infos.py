@@ -79,6 +79,24 @@ class InternetInfo(AbstractInfo):
         self.eta_calculator = ETACalculator(self.speed_calculator)
 
 
+class PercentageOnlyInfo(AbstractInfo):
+    """
+    Display percentage after the loading bar.
+    """
+    def __init__(self, tot_size):
+        self.percentage_calculator = PercentageCalculator(tot_size)
+
+
+class PercentageInfo(StandardInfo):
+    """
+    Display percentage and verbose infos.
+    """
+
+    def __init__(self, tot_size):
+        self.percentage_calculator = PercentageCalculator(tot_size)
+        super().__init__(tot_size)
+
+
 class SpeedCalculator(object):
     """
     Speed calculator algorithm.
@@ -234,3 +252,25 @@ class ETACalculator(object):
         Return a formated string of the ETA.
         """
         return self.time_to_str(self.eta(loaded))
+
+
+class PercentageCalculator(object):
+    """
+    Calculate the percentage of loading.
+    """
+
+    def __init__(self, tot_size):
+        self.tot_size = tot_size
+        self.already_loaded = 0
+
+    @staticmethod
+    def nb_to_perc_str(nb, tot_nb):
+        return "{:>4}%".format(round(nb / tot_nb * 100))
+
+    def display(self, loaded):
+        self.already_loaded += loaded
+        return self.nb_to_perc_str(self.already_loaded, self.tot_size)
+
+    def done(self):
+        self.already_loaded = self.tot_size
+        return self.display(0)
