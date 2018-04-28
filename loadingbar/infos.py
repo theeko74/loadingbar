@@ -201,11 +201,11 @@ class SizeCalculator(object):
         Convert size in bytes to string with appropriate units.
         """
         # At least display size in Ko
-        size = size / 1000
-        if size > 1000000:
-            return "{:5.1f}G".format(size/1000000)
-        elif size > 1000:
-            return "{:5.1f}M".format(size/1000)
+        size = size / (2**10)
+        if size > (1024**2): # Gygabytes
+            return "{:5.1f}G".format(size/(1024**2))
+        elif size > 1024: # Megabytes
+            return "{:5.1f}M".format(size/1024)
         else:
             return "{:>5}K".format(round(size))
 
@@ -213,7 +213,7 @@ class SizeCalculator(object):
         """
         Return a formated string of the downloaded size.
         """
-        return self.size_to_str(self.size(loaded))
+        return self.size_to_str(self.size(loaded)) + ' /' + self.size_to_str(self.tot_size)
 
 
 class ETACalculator(object):
