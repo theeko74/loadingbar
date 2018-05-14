@@ -18,6 +18,7 @@ standard_library.install_aliases()
 
 # Standard imports
 import sys
+import os
 
 # Module imports
 from loadingbar.aloadingbar import ILoadingBar
@@ -76,8 +77,16 @@ class MessageLoadingBar(LoadingBar):
         """
         s = self.update_loading_bar(progression)
         if s:
-            s += '  ' + msg
+            size_left = self.get_terminal_size()[1] - self.display_size
+            if size_left > 0:
+                s += '  ' + msg
+            else:
+                s += '  ' + "{msg:.{size_left}}".format(msg=msg, size_left=size_left)
             self.display(s)
+
+    @staticmethod
+    def get_terminal_size():
+        return list(map(int, os.popen('stty size', 'r').read().split()))
 
 
 class VerboseLoadingBar(ILoadingBar):
