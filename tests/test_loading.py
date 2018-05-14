@@ -239,3 +239,68 @@ def test_15():
         lb.update(STEP)
         time.sleep(0.5)
     lb.done()
+
+
+msg = "Loremipsumdolorsitamet,consecteturadipiscingelit.Curabituracduisitame" \
+"tquamultriciesportavelnecmetus.Praesentluctusjustopurus,sitametcondimentume" \
+"nimelementumid.Praesentinerosscelerisque,egestasligulaac,auctoripsum.Donece"
+#-----------------------------------------------------
+def test_16():
+    print("\n")
+    print("---- TEST 16 ----")
+    print("Long message, very low number")
+
+    SIZE = 3
+    STEP = 1
+
+    lb = bars.MessageLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP, msg)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_17():
+    print("\n")
+    print("---- TEST 17 ----")
+    print("Long message, high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = bars.MessageLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP, msg)
+        time.sleep(0.5)
+    lb.done()
+
+
+#-----------------------------------------------------
+def test_18():
+    print("\n")
+    print("---- TEST 18 ----")
+    print("Long message, small bar, high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = bars.MessageSmallLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP, msg)
+        time.sleep(0.5)
+    lb.done()
+
+#-----------------------------------------------------
+def test_19():
+    print("\n")
+    print("---- TEST 19 ----")
+    print("Full size loading bar, high number")
+
+    SIZE = 10**5 # 100KB
+    STEP = 10**4 # 10KB
+
+    lb = bars.FullSizeLoadingBar(SIZE)
+    for i in range(0, SIZE, STEP):
+        lb.update(STEP)
+        time.sleep(0.5)
+    lb.done()

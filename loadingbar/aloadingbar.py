@@ -18,6 +18,7 @@ from builtins import object
 
 # Standard imports
 import sys
+import os
 
 
 #-----------------------------------------------------------------
@@ -82,3 +83,11 @@ class ILoadingBar(object):
         s = "\r" + s
         sys.stdout.flush()
         sys.stdout.write(s)
+
+    @staticmethod
+    def get_terminal_size():
+        if sys.stdin.isatty():
+            return list(map(int, os.popen('stty size', 'r').read().split()))
+        else:
+            # default value
+            return (70, 100)

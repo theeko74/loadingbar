@@ -18,7 +18,6 @@ standard_library.install_aliases()
 
 # Standard imports
 import sys
-import os
 
 # Module imports
 from loadingbar.aloadingbar import ILoadingBar
@@ -50,6 +49,10 @@ class LoadingBar(ILoadingBar):
         super().__init__(tot_size, self.display_size, default_li, default_bg, None)
 
 
+class FullSizeLoadingBar(LoadingBar):
+    display_size = LoadingBar.get_terminal_size()[1]
+
+
 class InfoLoadingBar(ILoadingBar):
     """
     Loading bar with speed, ETA, size downloaded info.
@@ -77,16 +80,16 @@ class MessageLoadingBar(LoadingBar):
         """
         s = self.update_loading_bar(progression)
         if s:
-            size_left = self.get_terminal_size()[1] - self.display_size
-            if size_left > 0:
+            size_left = self.get_terminal_size()[1] - self.display_size - 2
+            if size_left > len(msg):
                 s += '  ' + msg
             else:
                 s += '  ' + "{msg:.{size_left}}".format(msg=msg, size_left=size_left)
             self.display(s)
 
-    @staticmethod
-    def get_terminal_size():
-        return list(map(int, os.popen('stty size', 'r').read().split()))
+
+class MessageSmallLoadingBar(MessageLoadingBar):
+    display_size = 10
 
 
 class VerboseLoadingBar(ILoadingBar):
