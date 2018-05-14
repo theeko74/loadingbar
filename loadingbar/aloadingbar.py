@@ -86,8 +86,10 @@ class ILoadingBar(object):
 
     @staticmethod
     def get_terminal_size():
-        if sys.stdin.isatty():
-            return list(map(int, os.popen('stty size', 'r').read().split()))
-        else:
-            # default value
-            return (70, 100)
+        # default value
+        DEFAULT = (70, 100)
+        if sys.stdin.isatty() and sys.stdout.isatty():
+            size = list(map(int, os.popen('stty size', 'r').read().split()))
+            if size:
+                return size
+        return DEFAULT
